@@ -27,7 +27,7 @@ cards = [
 cardsInPlay = [];
 
 invalidSelection = function() {
-	alert("Refresh the browser and only select 2 cards to play this game!");
+	alert("Click on the 'Reset Game' button to refresh the browser and select only 2 cards to play this game!");
 }
 
 //var flipCard = function(cardID) {
@@ -52,12 +52,19 @@ var flipCard = function() {
     }
 }
 
+var clickReset = function() {
+	//alert('Button has been clicked!');
+	window.location.reload();
+}
+
 var createBoard = function() {
 	for (var i = 0; i < cards.length; i++) {
 		var cardElement = document.createElement('img');
+		var button = document.querySelector('button');
 		cardElement.setAttribute("src", "images/back.png");
 		cardElement.setAttribute("data-id", i); //data- attributes store data about an element that is not tied to CSS style
 		cardElement.addEventListener('click', flipCard);
+		button.addEventListener('click',clickReset);
 		document.getElementById('game-board').appendChild(cardElement);
 	}
 }
